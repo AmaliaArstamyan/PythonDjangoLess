@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Labyrinth</title>
+    <style>
+        .maze {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 20px);
+            gap: 2px;
+        }
+        .cell {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+        }
+        .cell.right {
+            border-right: 4px solid black;
+        }
+        .cell.bottom {
+            border-bottom: 4px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Labyrinth</h1>
+    <form method="get">
+        Rows: <input type="number" name="rows" value="{{ rows }}">
+        Columns: <input type="number" name="cols" value="{{ cols }}">
+        <button type="submit">Generate</button>
+    </form>
+    <div class="maze">
+        {% for row in maze %}
+            {% for cell in row %}
+                <div class="cell 
+                    {% if cell.right %}right{% endif %}
+                    {% if cell.bottom %}bottom{% endif %}">
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+    </div>
+</body>
+</html>
